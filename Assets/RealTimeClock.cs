@@ -10,6 +10,7 @@ using UnityEngine;
 public class RealTimeClock : MonoBehaviour
 {
     private DateTime dt1;
+    [SerializeField] private bool StartClock;
 
     [SerializeField] private TextMeshProUGUI digitalClockText;
     [Space]
@@ -28,22 +29,23 @@ public class RealTimeClock : MonoBehaviour
         /*_hours = dt1.Hour;
         _minutes = dt1.Minute;
         _seconds = dt1.Second;*/
-        
-        StartCoroutine(UpdateTimeFromServer());
 
-        StartCoroutine(SecondsTime());
+        if (StartClock)
+        {
+            StartCoroutine(UpdateTimeFromServer());
+
+            StartCoroutine(SecondsTime());
+        }
     }
 
     IEnumerator UpdateTimeFromServer()
     {
-        dt1 = GetExactTime("https://time100.ru/");
+        dt1 = GetExactTime();
 
         _hours = dt1.Hour;
         _minutes = dt1.Minute;
         _seconds = dt1.Second;
-        arrowM.rotation = Quaternion.Euler(0, 0, -(_minutes * 6));
-        arrowH.rotation = Quaternion.Euler(0, 0, -((_minutes / 2) + _hours * 30));
-        arrowS.rotation = Quaternion.Euler(0, 0, -(_seconds * 6));
+        UpdateArrow(_hours, _minutes, _seconds);
         
         yield return 0;
     }
@@ -88,8 +90,16 @@ public class RealTimeClock : MonoBehaviour
         }
     }
 
-    DateTime GetExactTime(string url)
+    public void UpdateArrow(int H, int M, int S)
     {
+        arrowM.rotation = Quaternion.Euler(0, 0, -(M * 6));
+        arrowH.rotation = Quaternion.Euler(0, 0, -((M / 2) + H * 30));
+        arrowS.rotation = Quaternion.Euler(0, 0, -(S * 6));
+    }
+
+    public static DateTime GetExactTime()
+    {
+        string url = "https://time100.ru/";
         using (var client = new HttpClient())
         {
             try
