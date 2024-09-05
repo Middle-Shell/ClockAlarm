@@ -97,6 +97,13 @@ public class RealTimeClock : MonoBehaviour
         arrowS.rotation = Quaternion.Euler(0, 0, -(S * 6));
     }
 
+    public void GetArrowAngle(out float H, out float M, out float S)
+    {
+        H = arrowH.rotation.eulerAngles.z;
+        M = arrowH.rotation.eulerAngles.z;
+        S = arrowH.rotation.eulerAngles.z;
+    }
+
     public static DateTime GetExactTime()
     {
         string url = "https://time100.ru/";
