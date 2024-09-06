@@ -20,17 +20,19 @@ public class AlarmController : MonoBehaviour
     [Space] 
     [SerializeField] private UIController UIController;
     
-    [Space] 
-    [SerializeField] private DigitalClockAlarm digitalClockAlarm;
+    [Space] //TODO переделать в ивент
+    [SerializeField] private DigitalClockAlarm digitalClockAlarmV;
+    [SerializeField] private DigitalClockAlarm digitalClockAlarmH;
 
     [SerializeField] private GameObject HArrow;
     [SerializeField] private GameObject MArrow;
 
     [SerializeField] private Toggle togglePM;
 
-    private bool _validTime = false;
+    private int _hSave;
+    private int _mSave;
 
-    public void CheckValidDataDigitalTime()
+    /*public void CheckValidDataDigitalTime()
     {
         if (Convert.ToInt32(hourText.text) >= 0 && Convert.ToInt32(hourText.text) <= 23 || hourText.text == "0")
         {
@@ -42,12 +44,14 @@ public class AlarmController : MonoBehaviour
             }
         }
         print("ERROR");
-        digitalClockAlarm.SetDigitalClock();
-    }
+        digitalClockAlarmV.SetDigitalClock();
+        digitalClockAlarmH.SetDigitalClock();
+    }*/
 
     public void ChangeArrow()
-    {
-        digitalClockAlarm.SetDigitalClock((11+(Int32)(-(HArrow.transform.rotation.eulerAngles.z / 30)) + (togglePM.isOn?12:0)).ToString(), (60 + (Int32)(-MArrow.transform.rotation.eulerAngles.z /6)).ToString());
+    {//время высчитывается исхлдя из угла стрелки, для часовой - Z/30 для минутной z/6 для часовой так же учитывается нужно ли нам время после 11 утра, что прибавляет + 12 часов
+        digitalClockAlarmV.SetDigitalClock((11+(Int32)(-(HArrow.transform.rotation.eulerAngles.z / 30)) + (togglePM.isOn?12:0)), (60 + (Int32)(-MArrow.transform.rotation.eulerAngles.z /6)));
+        digitalClockAlarmH.SetDigitalClock((11+(Int32)(-(HArrow.transform.rotation.eulerAngles.z / 30)) + (togglePM.isOn?12:0)), (60 + (Int32)(-MArrow.transform.rotation.eulerAngles.z /6)));
     }
 
     public void SetAlarm()
@@ -56,30 +60,17 @@ public class AlarmController : MonoBehaviour
         //SetDigitalClock();
 
         UIController.SwitchDelButton(true);
-        
-        if (!_validTime)
-        {
-            print("Invalid time set.");
-            return;
-        }
-
-        DateTime nowData = RealTimeClock.GetExactTime();
 
         int hours = int.Parse(hourText.text);
         int minutes = int.Parse(minutesText.text);
         
-
-        DateTime alarmTime = new DateTime(nowData.Year, nowData.Month, nowData.Day, hours, minutes, 0);
-
-        if (alarmTime <= nowData)
-        {
-            alarmTime = alarmTime.AddDays(1);
-        }
+        digitalClockAlarmV.SetAlarmClock(hours, minutes);
+        digitalClockAlarmH.SetAlarmClock(hours, minutes);
         
+        notificationController.SendNotification("WAKE UP, SAMURAI", hours, minutes);
         
-        digitalClockAlarm.SetDigitalClock(hours.ToString(), minutes.ToString());
-        
-        notificationController.CreateNotification("ALARM!", "WAKE UP, SAMURAI", alarmTime);
+        //_hSave = hours;
+        //_mSave = minutes;
     }
 
     

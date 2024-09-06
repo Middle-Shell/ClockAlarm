@@ -7,8 +7,8 @@ public class DigitalClock : MonoBehaviour
 {
     [SerializeField] protected TextMeshProUGUI digitalClockText;
 
-    public virtual void SetDigitalClock(string h, string m, string s)
+    public virtual void SetDigitalClock(int h, int m, int s)
     {
-        digitalClockText.text = h + ":" + m + ":" + s;
+        digitalClockText.text = $"{h:D2}:{m:D2}:{s:D2}";
     }
 }

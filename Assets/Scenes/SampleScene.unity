@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -290,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartClock: 0
-  digitalClockText: {fileID: 1330000205}
+  digitalClock: {fileID: 0}
   arrowH: {fileID: 424860505}
   arrowM: {fileID: 549008468}
   arrowS: {fileID: 1387252714}
@@ -332,7 +331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 267.9, y: -152.06}
+  m_AnchoredPosition: {x: 267.90002, y: -152.06}
   m_SizeDelta: {x: 160, y: 43.387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &83980596
@@ -381,7 +380,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1150974480}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+        m_MethodName: set_isOn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &84085137
 GameObject:
@@ -953,7 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartClock: 1
-  digitalClockText: {fileID: 841989435}
+  digitalClock: {fileID: 1635851509}
   arrowH: {fileID: 1726284294}
   arrowM: {fileID: 1996095969}
   arrowS: {fileID: 1014998667}
@@ -1509,6 +1520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarmController: {fileID: 498177460}
+  brotherArrow: {fileID: 976523868}
 --- !u!1 &463689131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1629,7 @@ Canvas:
   m_GameObject: {fileID: 498177454}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1664,8 +1676,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47082160d4ceb6040b0228f136aa5ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarmPanel: {fileID: 1951050158}
-  delAlarmBtn: {fileID: 1719225942}
+  alarmPanelH: {fileID: 1806403557}
+  alarmPanelV: {fileID: 1951050158}
+  delAlarmBtnH: {fileID: 598236419}
+  delAlarmBtnV: {fileID: 1719225942}
 --- !u!114 &498177460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1697,8 @@ MonoBehaviour:
   minutesText: {fileID: 1861231410}
   notificationController: {fileID: 498177461}
   UIController: {fileID: 498177459}
-  digitalClockAlarm: {fileID: 2019947503}
+  digitalClockAlarmV: {fileID: 2019947503}
+  digitalClockAlarmH: {fileID: 310351293}
   HArrow: {fileID: 424860504}
   MArrow: {fileID: 549008467}
   togglePM: {fileID: 1150974480}
@@ -1699,7 +1714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30ceaa2c501bd84c9c79e78e66e4e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationsManager: {fileID: 1440300892}
 --- !u!114 &498177462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,12 +1793,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1962,7 +1976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -414.79, y: 131.53}
+  m_AnchoredPosition: {x: -414.78998, y: 131.53003}
   m_SizeDelta: {x: 67.9843, y: 66.8131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542812197
@@ -2082,7 +2096,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546603553}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.656059, w: 0.7547096}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.51, y: 0.51, z: 0.51}
   m_ConstrainProportionsScale: 0
@@ -2145,6 +2159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarmController: {fileID: 498177460}
+  brotherArrow: {fileID: 818723651}
 --- !u!1 &598236417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,8 +2196,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -214.22498, y: 41.3}
-  m_SizeDelta: {x: 142.59, y: 26.7353}
+  m_AnchoredPosition: {x: -204.7, y: 50.1}
+  m_SizeDelta: {x: 100.62, y: 18.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598236419
 MonoBehaviour:
@@ -2868,6 +2883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarmController: {fileID: 498177460}
+  brotherArrow: {fileID: 549008468}
 --- !u!1 &841989434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,8 +2949,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 88
-  m_fontSizeBase: 88
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2999,7 +3015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -6.7}
   m_SizeDelta: {x: 410, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &845152869
@@ -3526,8 +3542,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -214.22498, y: 93}
-  m_SizeDelta: {x: 370, y: 50}
+  m_AnchoredPosition: {x: -204.7, y: 99.8}
+  m_SizeDelta: {x: 410, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959790551
 MonoBehaviour:
@@ -3576,8 +3592,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3676,6 +3692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarmController: {fileID: 498177460}
+  brotherArrow: {fileID: 424860505}
 --- !u!1 &1014998666
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,7 +3716,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014998666}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
@@ -3932,7 +3949,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 83980596}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+        m_MethodName: set_isOn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!224 &1150974481
 RectTransform:
@@ -4515,18 +4544,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 498177460}
-        m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
-        m_MethodName: CheckValidDataDigitalTime
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 498177460}
         m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
         m_MethodName: SetAlarm
@@ -5443,8 +5460,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -213.99997, y: 131.1}
-  m_SizeDelta: {x: 142.14001, y: 26.6512}
+  m_AnchoredPosition: {x: -204.8, y: 115.65}
+  m_SizeDelta: {x: 100.82, y: 18.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1521070651
 MonoBehaviour:
@@ -5552,6 +5569,7 @@ GameObject:
   - component: {fileID: 1563316330}
   - component: {fileID: 1563316329}
   - component: {fileID: 1563316328}
+  - component: {fileID: 1563316331}
   m_Layer: 5
   m_Name: HourInputField (TMP)
   m_TagString: Untagged
@@ -5627,22 +5645,22 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 2
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 498177460}
-        m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
+      - m_Target: {fileID: 1563316331}
+        m_TargetAssemblyTypeName: ValidatorInput, Assembly-CSharp
         m_MethodName: CheckValidDataDigitalTime
         m_Mode: 1
         m_Arguments:
@@ -5727,6 +5745,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563316326}
   m_CullTransparentMesh: 1
+--- !u!114 &1563316331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563316326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bad647e48ba914daeebc90ecc8d2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textTMP: {fileID: 1563316328}
+  digitalClockAlarm: {fileID: 2019947503}
+  clock: {fileID: 35096783}
+  H: 1
 --- !u!1 &1571312415
 GameObject:
   m_ObjectHideFlags: 0
@@ -6044,6 +6078,7 @@ GameObject:
   - component: {fileID: 1606471237}
   - component: {fileID: 1606471236}
   - component: {fileID: 1606471235}
+  - component: {fileID: 1606471238}
   m_Layer: 5
   m_Name: HourInputField (TMP)
   m_TagString: Untagged
@@ -6119,22 +6154,22 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 2
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 498177460}
-        m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
+      - m_Target: {fileID: 1606471238}
+        m_TargetAssemblyTypeName: ValidatorInput, Assembly-CSharp
         m_MethodName: CheckValidDataDigitalTime
         m_Mode: 1
         m_Arguments:
@@ -6219,6 +6254,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606471233}
   m_CullTransparentMesh: 1
+--- !u!114 &1606471238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606471233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bad647e48ba914daeebc90ecc8d2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textTMP: {fileID: 1606471235}
+  digitalClockAlarm: {fileID: 310351293}
+  clock: {fileID: 1743526960}
+  H: 1
 --- !u!1 &1628099931
 GameObject:
   m_ObjectHideFlags: 0
@@ -6284,8 +6335,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 88
-  m_fontSizeBase: 88
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6350,7 +6401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -204.70111, y: 33.4}
+  m_AnchoredPosition: {x: -204.70111, y: 33.400024}
   m_SizeDelta: {x: 410, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1635851507
@@ -6362,6 +6413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1635851508}
+  - component: {fileID: 1635851509}
   m_Layer: 5
   m_Name: DigitalClock
   m_TagString: Untagged
@@ -6389,6 +6441,19 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: -421.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1635851509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635851507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8470ce30f7e56fb4e8e4907dcb18a25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digitalClockText: {fileID: 841989435}
 --- !u!1 &1642727186
 GameObject:
   m_ObjectHideFlags: 0
@@ -6474,18 +6539,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 498177460}
         m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
-        m_MethodName: CheckValidDataDigitalTime
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 498177460}
-        m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
         m_MethodName: SetAlarm
         m_Mode: 1
         m_Arguments:
@@ -6546,6 +6599,7 @@ GameObject:
   - component: {fileID: 1654847279}
   - component: {fileID: 1654847278}
   - component: {fileID: 1654847277}
+  - component: {fileID: 1654847280}
   m_Layer: 5
   m_Name: MinuteInputField (TMP) (1)
   m_TagString: Untagged
@@ -6621,22 +6675,22 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 2
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 498177460}
-        m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
+      - m_Target: {fileID: 1654847280}
+        m_TargetAssemblyTypeName: ValidatorInput, Assembly-CSharp
         m_MethodName: CheckValidDataDigitalTime
         m_Mode: 1
         m_Arguments:
@@ -6721,6 +6775,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654847275}
   m_CullTransparentMesh: 1
+--- !u!114 &1654847280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654847275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bad647e48ba914daeebc90ecc8d2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textTMP: {fileID: 1654847277}
+  digitalClockAlarm: {fileID: 310351293}
+  clock: {fileID: 1743526960}
+  H: 0
 --- !u!1 &1671497602
 GameObject:
   m_ObjectHideFlags: 0
@@ -6813,7 +6883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartClock: 1
-  digitalClockText: {fileID: 1330000205}
+  digitalClock: {fileID: 1798866844}
   arrowH: {fileID: 546603554}
   arrowM: {fileID: 2071180940}
   arrowS: {fileID: 2077448414}
@@ -7075,7 +7145,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726284293}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.656059, w: 0.7547096}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
@@ -7181,7 +7251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartClock: 0
-  digitalClockText: {fileID: 841989435}
+  digitalClock: {fileID: 0}
   arrowH: {fileID: 976523868}
   arrowM: {fileID: 818723651}
   arrowS: {fileID: 463689132}
@@ -7335,7 +7405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.7019043, y: -5.7507935}
+  m_AnchoredPosition: {x: -3.7019043, y: -5.7507324}
   m_SizeDelta: {x: 714.0773, y: 358.5674}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780779273
@@ -7460,6 +7530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798866843}
+  - component: {fileID: 1798866844}
   m_Layer: 5
   m_Name: DigitalClock
   m_TagString: Untagged
@@ -7487,6 +7558,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -272.6184}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1798866844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798866842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8470ce30f7e56fb4e8e4907dcb18a25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digitalClockText: {fileID: 1330000205}
 --- !u!1 &1801793398
 GameObject:
   m_ObjectHideFlags: 0
@@ -7601,7 +7685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.075, y: 0}
   m_AnchorMax: {x: 0.95125, y: 0.9662417}
-  m_AnchoredPosition: {x: -6.3861694, y: -258.72803}
+  m_AnchoredPosition: {x: -6.3862305, y: -258.72815}
   m_SizeDelta: {x: -326.35303, y: -515.5477}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1809420752
@@ -7822,8 +7906,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7956,8 +8040,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8173,6 +8257,7 @@ GameObject:
   - component: {fileID: 1861231412}
   - component: {fileID: 1861231411}
   - component: {fileID: 1861231410}
+  - component: {fileID: 1861231413}
   m_Layer: 5
   m_Name: MinuteInputField (TMP) (1)
   m_TagString: Untagged
@@ -8248,22 +8333,22 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 2
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 498177460}
-        m_TargetAssemblyTypeName: AlarmController, Assembly-CSharp
+      - m_Target: {fileID: 1861231413}
+        m_TargetAssemblyTypeName: ValidatorInput, Assembly-CSharp
         m_MethodName: CheckValidDataDigitalTime
         m_Mode: 1
         m_Arguments:
@@ -8348,6 +8433,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861231408}
   m_CullTransparentMesh: 1
+--- !u!114 &1861231413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861231408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bad647e48ba914daeebc90ecc8d2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textTMP: {fileID: 1861231410}
+  digitalClockAlarm: {fileID: 2019947503}
+  clock: {fileID: 35096783}
+  H: 0
 --- !u!1 &1924306032
 GameObject:
   m_ObjectHideFlags: 0
@@ -8537,7 +8638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.075, y: 0}
   m_AnchorMax: {x: 0.95125, y: 0.9662417}
-  m_AnchoredPosition: {x: -6.3861847, y: -258.728}
+  m_AnchoredPosition: {x: -6.3861847, y: -258.72803}
   m_SizeDelta: {x: -326.35303, y: -515.5477}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1953952571
@@ -8717,7 +8818,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996095968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
@@ -8885,7 +8986,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071180939}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.51, y: 0.51, z: 0.51}
   m_ConstrainProportionsScale: 0
@@ -8921,7 +9022,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077448413}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.51, y: 0.51, z: 0.51}
   m_ConstrainProportionsScale: 0

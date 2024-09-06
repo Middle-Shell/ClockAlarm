@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // Для интерфейсов событий
+using UnityEngine.EventSystems; 
 
 public class RotateWithFinger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -8,6 +8,7 @@ public class RotateWithFinger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private float offset = 90f;
 
     [SerializeField] private AlarmController _alarmController;
+    [SerializeField] private Transform brotherArrow;
 
     // Если Canvas настроен как Screen Space - Overlay, Camera не требуется
     // Если Screen Space - Camera или World Space, необходимо указать основную камеру
@@ -33,13 +34,11 @@ public class RotateWithFinger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         }
     }
 
-    // Обработка события нажатия указателя на элемент
     public void OnPointerDown(PointerEventData eventData)
     {
         isDragging = true;
     }
 
-    // Обработка события отпускания указателя
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
@@ -49,7 +48,6 @@ public class RotateWithFinger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         Vector3 pointerPosition;
 
-        // Обработка касаний на мобильных устройствах
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -57,14 +55,12 @@ public class RotateWithFinger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         }
         else
         {
-            // Обработка мыши для ПК
             pointerPosition = Input.mousePosition;
         }
 
         // Преобразование позиции указателя в мировые координаты
         Vector3 worldPoint = mainCamera.ScreenToWorldPoint(pointerPosition);
 
-        // Если Canvas в Screen Space - Overlay, Z-координата может быть игнорирована
         worldPoint.z = transform.position.z;
 
         // Вычисляем направление от центра стрелки до указателя
@@ -75,6 +71,7 @@ public class RotateWithFinger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         // Применяем вращение с учетом смещения
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - offset));
+        brotherArrow.rotation = Quaternion.Euler(new Vector3(0, 0, angle - offset));
         
         _alarmController.ChangeArrow();
     }
